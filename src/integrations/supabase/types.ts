@@ -14,16 +14,168 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      buyer_leads: {
+        Row: {
+          assigned_to: string | null
+          bathrooms: number | null
+          bedrooms: number | null
+          budget_max: number | null
+          budget_min: number | null
+          created_at: string | null
+          created_by: string | null
+          email: string
+          first_name: string
+          id: string
+          last_contacted: string | null
+          last_name: string
+          next_follow_up: string | null
+          notes: string | null
+          phone: string | null
+          preferred_areas: string[] | null
+          priority: number | null
+          property_type: string | null
+          source: Database["public"]["Enums"]["lead_source"] | null
+          status: Database["public"]["Enums"]["lead_status"] | null
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          budget_max?: number | null
+          budget_min?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          email: string
+          first_name: string
+          id?: string
+          last_contacted?: string | null
+          last_name: string
+          next_follow_up?: string | null
+          notes?: string | null
+          phone?: string | null
+          preferred_areas?: string[] | null
+          priority?: number | null
+          property_type?: string | null
+          source?: Database["public"]["Enums"]["lead_source"] | null
+          status?: Database["public"]["Enums"]["lead_status"] | null
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          bathrooms?: number | null
+          bedrooms?: number | null
+          budget_max?: number | null
+          budget_min?: number | null
+          created_at?: string | null
+          created_by?: string | null
+          email?: string
+          first_name?: string
+          id?: string
+          last_contacted?: string | null
+          last_name?: string
+          next_follow_up?: string | null
+          notes?: string | null
+          phone?: string | null
+          preferred_areas?: string[] | null
+          priority?: number | null
+          property_type?: string | null
+          source?: Database["public"]["Enums"]["lead_source"] | null
+          status?: Database["public"]["Enums"]["lead_status"] | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      lead_activities: {
+        Row: {
+          activity_type: string
+          created_at: string | null
+          description: string
+          id: string
+          lead_id: string
+          metadata: Json | null
+          user_id: string | null
+        }
+        Insert: {
+          activity_type: string
+          created_at?: string | null
+          description: string
+          id?: string
+          lead_id: string
+          metadata?: Json | null
+          user_id?: string | null
+        }
+        Update: {
+          activity_type?: string
+          created_at?: string | null
+          description?: string
+          id?: string
+          lead_id?: string
+          metadata?: Json | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_activities_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "buyer_leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          full_name: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"] | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"] | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"] | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "agent" | "viewer"
+      lead_source:
+        | "website"
+        | "referral"
+        | "social_media"
+        | "cold_call"
+        | "email_campaign"
+        | "other"
+      lead_status:
+        | "new"
+        | "contacted"
+        | "qualified"
+        | "not_qualified"
+        | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +302,17 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "agent", "viewer"],
+      lead_source: [
+        "website",
+        "referral",
+        "social_media",
+        "cold_call",
+        "email_campaign",
+        "other",
+      ],
+      lead_status: ["new", "contacted", "qualified", "not_qualified", "closed"],
+    },
   },
 } as const
