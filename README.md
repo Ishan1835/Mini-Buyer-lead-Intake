@@ -1,16 +1,8 @@
-# Welcome to your Lovable project
-
-## Project info
-
-**URL**: https://lovable.dev/projects/810b6ee6-cc5c-4dc9-9cd7-ff029f560865
+# Welcome to your mini buyer lead intake app project
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/810b6ee6-cc5c-4dc9-9cd7-ff029f560865) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
@@ -59,15 +51,3 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/810b6ee6-cc5c-4dc9-9cd7-ff029f560865) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
